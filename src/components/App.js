@@ -18,8 +18,8 @@ function App() {
     setFilterBy(e.target.innerText)
   }
 
-  function handleRemove(e) {
-    const newList = taskList.filter(task => task.text !== e.target.parentNode.children[1].innerText)
+  function handleRemove(text) {
+    const newList = taskList.filter(task => task.text !== text)
     setTaskList(newList)
   }
 
@@ -43,7 +43,7 @@ function App() {
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} onHandleFilterClick={handleFilterClick} filterBy={filterBy}/>
       <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit} onNameChange={handleNameChange} onCategoryChange={handleCategoryChange} formName={formName} formCategory={formCategory} />
-      <TaskList tasks={taskList} filterBy={filterBy} onHandleRemove={handleRemove}/>
+      <TaskList tasks={taskList} filterBy={filterBy} deleteButton={handleRemove}/>
     </div>
   );
 }
